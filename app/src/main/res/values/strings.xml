@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Sound Hub</string>
+    <string name="title_fragmentMain">Main</string>
 </resources>
