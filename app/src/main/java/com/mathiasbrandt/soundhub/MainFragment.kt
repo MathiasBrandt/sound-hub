@@ -4,12 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.mathiasbrandt.soundhub.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
+    lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // create view model
+
+        mainViewModel = MainViewModel()
     }
 
     override fun onCreateView(
@@ -17,13 +22,16 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,
-//            R.layout.fragment_login, container, false)
-//        binding.lifecycleOwner = this
-//        binding.viewModel = viewModel
+        val binding = DataBindingUtil.inflate<FragmentMainBinding>(
+            inflater,
+            R.layout.fragment_main,
+            container,
+            false
+        )
 
-//        return binding.root
-        return View(context)
+        binding.lifecycleOwner = this
+        binding.viewModel = mainViewModel
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
